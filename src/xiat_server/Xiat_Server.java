@@ -30,7 +30,7 @@ public class Xiat_Server {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         ServerSocket servSoc = new ServerSocket(puerto); //Crea Socket de servidor
-
+        System.err.println("asd");
         Socket cliSock = servSoc.accept();//Establece conexion con el cliente
         System.err.println("Conectado");//Muestra por el canal de error al conectar con cliente
 
