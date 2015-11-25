@@ -6,6 +6,7 @@
 package xiat_server;
 
 import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  *
@@ -13,16 +14,21 @@ import java.io.PrintWriter;
  */
 public class Recibidor {
 
-    PrintWriter clientes[];
+    public Recibidor(Map<Integer, PrintWriter> mapPrintClientes) {
+        clientes.equals(mapPrintClientes);
+    }
+
+    private Map<Integer, PrintWriter> clientes;
 
     public void recibido(String recibido, int numCliente) {
-        int i = 0;
-        for (PrintWriter printer : clientes) {
-            if (i != numCliente) {
-                printer.println(recibido);
-                printer.flush();
+        for (Integer cliente : clientes.keySet()) {
+            if (cliente != numCliente) {
+                PrintWriter printer = clientes.get(cliente);
+                if (printer != null) {
+                    printer.println(recibido);
+                    printer.flush();
+                }
             }
-            i++;
         }
 
     }
